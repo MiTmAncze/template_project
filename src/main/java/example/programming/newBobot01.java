@@ -80,7 +80,23 @@ double vysledek1 = vysledek * 360;
 
          metodaotoceni(motorPravy, motorVlevo, 190, true, -190, false);
 
+         EV3UltrasonicSensor sensor = new EV3UltrasonicSensor(SensorPort.S1);
+         float[]pole = new float[sensor.sampleSize()];
+
+         for ( int i = 0; i < 2;i++)
+         {
+             sensor.fetchSample (pole,0);
+
+             System.out.println("vzdálenost" + pole[0]);
+             Delay.msDelay (500);
+
+
+         }
+
+
      }
+
+
 
     private static void metodaotoceni(EV3LargeRegulatedMotor motorPravy, EV3LargeRegulatedMotor motorVlevo, int i, boolean b, int i2, boolean b2) {
         motorPravy.rotate(i, b);
